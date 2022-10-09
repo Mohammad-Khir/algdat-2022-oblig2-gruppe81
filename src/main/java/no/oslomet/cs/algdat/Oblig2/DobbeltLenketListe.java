@@ -6,6 +6,7 @@ package no.oslomet.cs.algdat.Oblig2;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -36,12 +37,32 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int antall;            // antall noder i listen
     private int endringer;         // antall endringer i listen
 
-    public DobbeltLenketListe() {
-        throw new UnsupportedOperationException();
+    public DobbeltLenketListe() {   // standardkonstruktør
+        hode = hale = null;
+        endringer = 0;
+        antall = 0;
     }
 
     public DobbeltLenketListe(T[] a) {
-        throw new UnsupportedOperationException();
+        this();     // alle variabelene er nullet
+
+        Objects.requireNonNull(a,"Tabellen a er null!");
+
+
+        int i = 0; for(; i<a.length && a[i] == null; i++); // vil nå første indeks som ikke er null
+        if(i<a.length){
+            Node<T> p = hode = new Node<>(a[i],null,null); //den første noden
+            antall = 1;
+
+            for(i++; i<a.length; i++){  // finne neste noder
+                if(a[i] != null){
+                    p = p.neste = new Node<>(a[i],p,null);
+                    antall++;
+                }
+            }
+            hale = p;
+        }
+
     }
 
     public Liste<T> subliste(int fra, int til) {
@@ -49,14 +70,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public int antall() {
-        throw new UnsupportedOperationException();
-    }
+    public int antall() { return antall; }
 
     @Override
-    public boolean tom() {
-        throw new UnsupportedOperationException();
-    }
+    public boolean tom() { return antall == 0; }
 
     @Override
     public boolean leggInn(T verdi) {

@@ -2,8 +2,10 @@
 
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
-* Navn Navnesen, S123456, s123456@oslomet.no
-* ...
+* Moustapha Aljundi, 5364546, s364546@oslomet.no
+* Alan Ali, s356488, s356488@oslomet.no
+* Mohammad Khir Khaled Almohammad, 343988, s343988@oslomet.no
+* Ali Fariz Alghadban, s362111, s362111@oslomet.no
 
 # Arbeidsfordeling
 
@@ -15,6 +17,6 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 # Oppgavebeskrivelse
 
-I oppgave 1 så gikk vi frem ved å ...
+
 
 I oppgave 2 så brukte vi en ... til å ...
