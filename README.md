@@ -17,6 +17,12 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 # Oppgavebeskrivelse
 
+### Oppgave 1
+antall() returnerer antall noder i listen. tom() er true når antall = 0.
+Konstruktøren bruker en for-løkke til å finne den første i tabellen a
+som ikke er null. Tar og legger den første verdien i a som den første noden.
+Bruker så en for-løkke for å finne alle veridene til indeksene i a
+som ikke er null og legger dem som en ny node i listen. Siste verdi i a
+blir lagt inn i hale. Vi tok idien fra oppgave3 avsnitt3.3.2 i kompendiet.
 
-
-I oppgave 2 så brukte vi en ... til å ...
+### Oppgave 2
