@@ -26,3 +26,26 @@ som ikke er null og legger dem som en ny node i listen. Siste verdi i a
 blir lagt inn i hale. Vi tok idien fra oppgave3 avsnitt3.3.2 i kompendiet.
 
 ### Oppgave 2
+For å løse denne oppgaven tok vi inspirasjon fra Kompendiet oppgave2 avsnitt 3.3.2.
+Løste metoden toString() ved å bruke StringBuilder som setter hver node
+som er i listen inn i en streng. Koden sjekker at listen ikke er tom.
+Setter at første node peker på hode og går deretter til neste-peker.
+Den tar alle nodene som ikke er null og legger dem etterhverandre i
+strengen ved bruk av en while-løkke. omvendtString() bruker det samme
+oppsett, bortsett fra at den starter fra halen og går til forrige-peker.
+
+### Oppgave 3
+
+### Oppgave 4
+
+### Oppgave 5
+
+### Oppgave 6
+
+### Oppgave 7
+
+### Oppgave 8
+
+### Oppgave 9
+
+### Oppgave 10
