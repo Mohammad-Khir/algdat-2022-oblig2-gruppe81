@@ -67,11 +67,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public Liste<T> subliste(int fra, int til) {
 
-        throw new UnsupportedOperationException();
+        fratilKontroll(antall,fra,til); //sjekke om indeksene fra og til er lovlige
+        Liste<T> liste = new DobbeltLenketListe<>();    //ny objekt
+        for (int i=fra; i<til; i++){
+            T verdi = finnNode(i).verdi;       //ta vare på ønkede verdi
+            liste.leggInn(verdi);           //legg den inn i liste
+        }
+        return liste;
     }
 
     private void fratilKontroll(int antall, int fra, int til){
-        throw new UnsupportedOperationException();
+        if(fra < 0 || til > antall)
+            throw new IndexOutOfBoundsException("Indeksene er utenfor arrayet!");
+        if(fra > til)
+            throw new IllegalArgumentException("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
     }
 
     @Override
@@ -106,12 +115,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    private Node<T> finnNode(int indeks){
 
+        Node<T> p;
+        if(indeks < antall/2){
+            p = hode;       //peker på hode
+            for(int i = 0; i<indeks; i++) p = p.neste; //Start letingen fra hode mot høyere
+        }else{
+            p = hale;       //Peker på hale
+            for(int i = antall-1; i>indeks; i--) p = p.forrige;  //Start letingen fra hale mot venstre
+        }
+        return p;
+    }
 
     @Override
     public T hent(int indeks) {
 
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);  //Sjekk indeks
+        Node<T> p = finnNode(indeks);   // finne indeksen til ønskede node
+        return p.verdi;
     }
 
     @Override
@@ -122,7 +144,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public T oppdater(int indeks, T nyverdi) {
 
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(nyverdi,"Ikke tillatt med null-verdier!");
+        indeksKontroll(indeks, false);  //Sjekk indeks
+        Node<T> p = finnNode(indeks);       // finne ønskede node
+        T gammelVerdi = p.verdi;            //ta vare på verdien
+        p.verdi = nyverdi;              //bytte gamle verdien med den nye
+        endringer++;
+
+        return gammelVerdi;
     }
 
     @Override
