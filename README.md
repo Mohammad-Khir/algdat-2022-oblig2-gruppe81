@@ -36,6 +36,12 @@ strengen ved bruk av en while-løkke. omvendtString() bruker det samme
 oppsett, bortsett fra at den starter fra halen og går til forrige-peker.
 
 ### Oppgave 3
+finnNode() metode sjekker om indeks er riktig og looper gjennom listen til
+den ønskede indeksen og returnerer noden, oppdater() bruker finnNode og
+endrer verdien til node(sjekker om verdi er gyldig og indeks).
+Subliste() bruker finnNode inne i en forloop.
+Kan effektiviseres med to forløkker istede for finnNode kall hvor
+hvert element.
 
 ### Oppgave 4
 
