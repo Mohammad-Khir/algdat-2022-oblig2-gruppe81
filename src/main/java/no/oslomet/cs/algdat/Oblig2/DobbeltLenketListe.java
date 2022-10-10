@@ -3,11 +3,11 @@ package no.oslomet.cs.algdat.Oblig2;
 
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
-
-import java.util.Comparator;
-import java.util.Iterator;
+import java.util.ConcurrentModificationException;
+import java.util.NoSuchElementException;
 import java.util.Objects;
-
+import java.util.Iterator;
+import java.util.Comparator;
 
 public class DobbeltLenketListe<T> implements Liste<T> {
 
@@ -66,6 +66,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til) {
+
+        throw new UnsupportedOperationException();
+    }
+
+    private void fratilKontroll(int antall, int fra, int til){
         throw new UnsupportedOperationException();
     }
 
@@ -77,7 +82,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException();
+
+        Objects.requireNonNull(verdi,"Ikke tillatt med null-verdier!");
+
+        if(antall == 0){    //Listen på forhånd er tom
+            hode=hale = new Node<>(verdi,null,null);
+        }else{              //Listen er ikke tom.
+            hale = hale.neste = new Node<>(verdi,hale,null);    // legges bakerst
+        }
+        antall++;       // en mer i listen
+        endringer++;    // øke endinger i listen
+
+        return true;    // vellykket innlegging
     }
 
     @Override
@@ -90,8 +106,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+
+
     @Override
     public T hent(int indeks) {
+
         throw new UnsupportedOperationException();
     }
 
@@ -102,6 +121,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
+
         throw new UnsupportedOperationException();
     }
 
@@ -122,11 +142,39 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+
+        StringBuilder s = new StringBuilder();
+        s.append('[');  // starter utsriften med [
+        if(!tom()){
+            Node<T> p = hode;   // starter å bygge fra hode
+            s.append(p.verdi);  //så legger den inn i s
+            p = p.neste;    //hode blir da neste.
+
+            while (p != null){  // tar med resten hvis det er noe mer
+                s.append(',').append(' ').append(p.verdi);
+                p = p.neste;
+            }
+        }
+        s.append(']');  // avslutter utsriften med ]
+        return s.toString();
     }
 
     public String omvendtString() {
-        throw new UnsupportedOperationException();
+
+        StringBuilder s = new StringBuilder();
+        s.append('[');  // starter utsriften med [
+        if(!tom()){
+            Node<T> p = hale;   // starter å skrive verdier fra hale
+            s.append(p.verdi);  //så legger den inn i s
+            p = p.forrige;    //hale blir da forrige.
+
+            while (p != null){  // tar med resten hvis det er noe mer
+                s.append(',').append(' ').append(p.verdi);
+                p = p.forrige;
+            }
+        }
+        s.append(']');  // avslutter utsriften med ]
+        return s.toString();
     }
 
     @Override
@@ -172,6 +220,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         throw new UnsupportedOperationException();
+
+
     }
 
 } // class DobbeltLenketListe
