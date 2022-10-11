@@ -111,8 +111,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException();
+    public boolean inneholder(T verdi) {     //ligner på oppgave2 avsnitt 3.3.3
+
+        return indeksTil(verdi) != -1;
     }
 
     private Node<T> finnNode(int indeks){
@@ -137,8 +138,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public int indeksTil(T verdi) {
-        throw new UnsupportedOperationException();
+    public int indeksTil(T verdi) {  //utgangspunkt i oppgave2 avsnitt 3.3.3
+        if(verdi == null) return -1;
+
+        Node<T> p = hode;
+        for(int i=0; i<antall; i++){
+            if(p.verdi.equals(verdi)){
+                return i;       // return indeksen
+            }
+            p = p.neste; // går til neste node
+        }
+        return -1;  //hvis verdien ikke finnes
     }
 
     @Override
