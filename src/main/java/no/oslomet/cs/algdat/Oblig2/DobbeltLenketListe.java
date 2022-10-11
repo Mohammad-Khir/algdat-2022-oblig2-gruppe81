@@ -187,13 +187,72 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
+    public boolean fjern(T verdi) {     //ut fra oppgave3 avsnitt 3.3.3 i kompendie
+
+        if(verdi == null) return false;
+
+        Node<T> p = hode, q, r;
+
+        for (int i = 0;i < antall; i++) {
+            if (p.verdi.equals(verdi)) {    // prøver å finne verdien
+                if (antall == 1){       // Listen inneholder kun en verdi?
+                    hode = hale = null;
+                    break;
+                }
+                if (i == 0) {   // verdien kommer først
+                    p = p.neste;
+                    p.forrige = null;
+                    hode = p;
+                    break;
+                } else if (i < antall - 1) {    // verdien kommer mellom to verdier
+                    p = p.forrige;
+                    q = p.neste;
+                    r = q.neste;
+
+                    p.neste = r;
+                    r.forrige = p;
+                    break;
+                } else {        // verdien kommer sist
+                    q = p.forrige;
+                    q.neste = null;
+                    hale = q;
+                    break;
+                }
+            }
+            if (i == antall-1) {    // fant ikke verdien
+                return false;
+            }
+            p = p.neste;
+        }
+        antall--;
+        endringer++;
+
+        return true;
     }
 
     @Override
     public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);  //sjekke indeksen
+        if (antall == 0)        // liste er tom
+            throw new NoSuchElementException("Liste er tom");
+        Node<T> temp = finnNode(indeks);    //finne ønskede node
+        if (temp == null)
+            return null;
+        if (temp.forrige != null) {
+            temp.forrige.neste = temp.neste;
+        }
+        if (temp.neste != null) {
+            temp.neste.forrige = temp.forrige;
+        }
+        if (temp == hode && temp.neste != null) {
+            hode = temp.neste;
+        }
+        if (temp == hale && temp.forrige != null) {
+            hale = temp.forrige;
+        }
+        antall--;
+        endringer++;
+        return temp.verdi;
     }
 
     @Override
