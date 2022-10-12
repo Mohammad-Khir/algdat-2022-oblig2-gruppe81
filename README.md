@@ -1,4 +1,4 @@
-# Obligatorisk oppgave 2 i Algoritmer og Datastrukturer
+# Obligatorisk oppgave 2 i Algoritmer og Datastrukturer MJ
 
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:

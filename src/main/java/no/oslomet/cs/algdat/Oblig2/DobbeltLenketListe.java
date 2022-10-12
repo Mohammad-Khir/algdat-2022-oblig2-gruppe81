@@ -189,15 +189,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean fjern(T verdi) {     //ut fra oppgave3 avsnitt 3.3.3 i kompendie
+    public boolean fjern(T verdi) {    //ut fra oppgave3 avsnitt 3.3.3 i kompendie
 
-        if (verdi == null) return false;
+        if(verdi == null) return false;
 
         Node<T> p = hode, q, r;
 
-        for (int i = 0; i < antall; i++) {
+        for (int i = 0;i < antall; i++) {
             if (p.verdi.equals(verdi)) {    // prøver å finne verdien
-                if (antall == 1) {       // Listen inneholder kun en verdi?
+                if (antall == 1){       // Listen inneholder kun en verdi?
                     hode = hale = null;
                     break;
                 }
@@ -221,7 +221,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                     break;
                 }
             }
-            if (i == antall - 1) {    // fant ikke verdien
+            if (i == antall-1) {    // fant ikke verdien
                 return false;
             }
             p = p.neste;
