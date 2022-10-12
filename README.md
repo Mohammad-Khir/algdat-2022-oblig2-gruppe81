@@ -2,6 +2,7 @@
 
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
+## Gruppe 81:
 * Moustapha Aljundi, 5364546, s364546@oslomet.no
 * Alan Ali, s356488, s356488@oslomet.no
 * Mohammad Khir Khaled Almohammad, 343988, s343988@oslomet.no
